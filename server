@@ -1,0 +1,23 @@
+library(shiny)
+
+################################## Initialisation ########################
+
+setwd("N:/Data/ING3A/ProjetR/Sujet7/rendu/Projet 3")
+
+Tab1 <- read.csv(file="N:/Data/ING3A/ProjetR/Sujet7/rendu/Projet 3/descriptif.csv",sep=";",head=T)
+
+shinyServer(function(input, output) {
+#   TypPeupl <- reactive({ #on cree une entite qui sert Ã  etre affichee et qui sert au calcul
+#     paste(input$TypPeupl)#reactive car elle change selon input$variable selectionnÃ©e
+# 
+# })
+  
+  output$descriptif = renderTable({
+    Tab1 
+  })  
+  
+  
+  })
+  
+
+            

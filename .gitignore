@@ -1,0 +1,57 @@
+library(shiny)
+shinyUI(pageWithSidebar( #On dÃ©finit le type d'Interface utilisateur
+  headerPanel("Pertinence de la mÃ©thode de mesure par type de peuplement"),
+  sidebarPanel(
+    HTML('<p><img src="logo.png"/></p>'),
+    sliderInput("G", "Surface terriÃ¨re:", 
+                min = 20, max = 40, value = 25, step= 5)
+  ),
+    mainPanel(
+           tabsetPanel(
+        tabPanel("Taillis jeune",#creation de l'onglet "carte"
+                 "Taillis jeune 10mÂ²/ha",
+                HTML('<p><img src="Tj10.png"/></p>')
+               ),
+        tabPanel("Taillis vieux", 
+        "Taillis vieux 10mÂ²/ha",
+        HTML('<p><img src="T_v_10.png"/></p>'),
+        "Taillis vieux 15mÂ²/ha",
+        HTML('<p><img src="T_v_15.png"/></p>'),     
+        "Taillis vieux 20mÂ²/ha",
+        HTML('<p><img src="T_v_20.png"/></p>'),
+        "Taillis vieux 25mÂ²/ha",
+         HTML('<p><img src="T_v_25.png"/></p>')),
+        tabPanel ("Commentaires Taillis",
+                  h2("Simulation des mÃ©thodes dâinventaire en fonction du mode de traitement ", 
+                     align="center",
+                  em("(Futaie RÃ©guliÃ¨re, IrrÃ©guliÃ¨re, Taillis)")),
+                  br(),
+("DiffÃ©rentes mÃ©thodes dâinventaires ont Ã©tÃ© testÃ©es (placette Ã  angle fixe, 
+placette Ã  surface fixe, PQCM). AppliquÃ© sur un peuplement fictif simulÃ© avec le logiciel R, 
+                   des comparatifs ont pu Ãªtre faits selon les modalitÃ©s de chaque mÃ©thode. "),
+                  br(),
+                  h6("Le graphique du nombre dâarbres Ã©chantillonnÃ©s par placette (effort de comptage)",style = "color:blue"), 
+                  h3("en fonction  du coefficient de variation",style = "color:green" ), 
+                  h2("donne une idÃ©e du type de placette Ã  retenir pour un inventaire.",style = "color:red",style = "font-family: 'times'; font-size: 16pt"),
+                  p("pour avoir des informations sur AFi allez voir", 
+                    a("AFI.", href="http://www.prosilva.fr/html/afi/afi.htm")),
+                  img(src="shiny.png", height = 100, width = 200, align="center")
+                  
+                  ),
+        tabPanel("DonnÃ©es",
+                tableOutput("descriptif")
+               
+                 )
+                 )
+#       if (input$TypPeupl == "Futaie irrÃ©guliÃ¨re" ) {HTML('<p><img src="myImage.png"/></p>')} #on peut utiliser directement la rÃ©ponse de input$affPlacettes
+#       else {HTML('<p><img src="shiny.png"/></p>')}
+#       
+      # Use imageOutput to place the image on the page
+      #imageOutput("preImage")
+      )   
+))
+
+
+
+
+                      
